@@ -1,28 +1,31 @@
 @extends('app')
 
+@section('header','Clients')
+@section('title','Clients')
 @section('content')
-    <div class="container">
-        <h1>Clients</h1>
-        <hr/>
-        <div class="row>">
-            <div class="col-sm-12">
-                <table class="table-striped table table-hover">
-                    <thead>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <table class="table-striped table table-hover">
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Company</th>
                             <th>E-mail</th>
                             <th>Phone</th>
+                            <th>Hourly rate</th>
                             <th>Actions</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         @foreach($clients as $client)
                             <tr>
                                 <td>{{$client->firstname}} {{$client->lastname}}</td>
                                 <td>{{$client->company}}</td>
                                 <td>{{$client->email}}</td>
                                 <td>{{$client->phone}}</td>
+                                <td>{{$client->hourly_rate}} DKK</td>
                                 <td>
                                     <a href="{{ url('worklog/create', $client->id)}}">Create work entry</a>
                                     |
@@ -30,8 +33,9 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
