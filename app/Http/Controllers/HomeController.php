@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller {
 
@@ -30,7 +31,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		return new RedirectResponse(url('/dashboard'));
 	}
 
 }

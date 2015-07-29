@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Client;
 use App\Http\Requests\ClientRequest;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller {
 
@@ -36,6 +35,11 @@ class ClientController extends Controller {
         {
             $clients = Client::where('fk_user', Auth::id())->get();
         }
+
+        Mail::raw('Laravel with Mailgun is easy!', function($message)
+        {
+            $message->to('info@getwebbed.dk');
+        });
 
         return view('client.index', compact('clients'));
     }
@@ -80,7 +84,7 @@ class ClientController extends Controller {
     {
         $client = Client::find($client_id);
 
-        if($client->fk_user != Auth::id())
+        if($client->fk_user != Auth::user()->id && Auth::user()->user_type != 'superadmin')
         {
             abort(403,'This is not your client');
         }
@@ -95,5 +99,39 @@ class ClientController extends Controller {
         $client->update($request->all());
 
         return redirect('/clients');
+    }
+
+    public function getCvrInformations($vat)
+    {
+        // Strip all other characters than numbers
+        $vat = preg_replace('/[^0-9]/', '', $vat);
+
+
+        // Check whether VAT-number is invalid
+        if( empty($vat) )
+        {
+
+            // Print error message
+            return('Venligst angiv et CVR-nummer.');
+
+        }else{
+            //return 'http://cvrapi.dk/api?search=' . $vat . '&country=DK';
+            // Start cURL
+            $ch = curl_init();
+
+            // Set cURL options
+            curl_setopt($ch, CURLOPT_URL, 'http://cvrapi.dk/api?search=' . $vat . '&country=dk');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'WorkNicer');
+
+            // Parse result
+            $result = curl_exec($ch);
+
+            // Close connection when done
+            curl_close($ch);
+
+            // Return our decoded result
+            return json_decode($result, 1);
+        }
     }
 }

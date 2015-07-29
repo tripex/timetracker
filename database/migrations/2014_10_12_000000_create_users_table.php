@@ -18,7 +18,12 @@ class CreateUsersTable extends Migration {
 			$table->string('firstname');
 			$table->string('lastname');
             $table->string('company');
+            $table->integer('vat_number')->unsigned();
+            $table->integer('zipcode')->unsigned();
+            $table->string('city');
+            $table->string('street');
 			$table->string('email')->unique();
+            $table->integer('phone')->unsigned();
 			$table->string('password', 60);
             $table->enum('user_type',['superadmin','admin']);
 			$table->rememberToken();

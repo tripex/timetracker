@@ -38,7 +38,12 @@ class UserTableSeeder extends Seeder {
             'company' => 'GetWebbed',
             'email' => 'info@getwebbed.dk',
             'password' => bcrypt('password'),
-            'user_type' => 'superadmin'
+            'user_type' => 'superadmin',
+            'vat_number' => 30425405,
+            'street' => 'Stenager 5',
+            'zipcode' => 3600,
+            'city' => 'Frederikssund',
+            'phone' => 28408074,
         ]);
 
         User::create([
@@ -47,7 +52,12 @@ class UserTableSeeder extends Seeder {
             'company' => 'LPG Bogføring',
             'email' => 'lene@lpgaccount.dk',
             'password' => bcrypt('password'),
-            'user_type' => 'admin'
+            'user_type' => 'admin',
+            'vat_number' => 30425405,
+            'street' => 'Grantofteparken 94',
+            'zipcode' => 2750,
+            'city' => 'Ballerup',
+            'phone' => 26889339,
         ]);
     }
 }

@@ -2,9 +2,9 @@
 
 use App\User;
 use App\Http\Requests;
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
 
@@ -46,7 +46,7 @@ class UserController extends Controller {
      * @param CreateUserRequest $request
 	 * @return Response
 	 */
-	public function store(CreateUserRequest $request)
+	public function store(UserRequest $request)
 	{
         User::create([
             'firstname' => $request['firstname'],
@@ -55,8 +55,34 @@ class UserController extends Controller {
             'email' => $request['email'],
             'user_type' => $request['user_type'],
             'password' => bcrypt($request['password']),
+            'vat_number' => $request['vat_number'],
+            'zipcode' => $request['zipcode'],
+            'city' => $request['city'],
+            'street' => $request['street'],
+            'phone' => $request['phone'],
         ]);
 
         return redirect('/users');
 	}
+
+    public function edit($user_id)
+    {
+        $user = User::find($user_id);
+
+        if($user->fk_user != Auth::user()->id && Auth::user()->user_type != 'superadmin')
+        {
+            abort(403,'This is not your client');
+        }
+
+        return view('User.edit', compact('user'));
+    }
+
+    public function update($user_id, UserRequest $request)
+    {
+        $user = User::findOrFail($user_id);
+
+        $user->update($request->all());
+
+        return redirect('/users');
+    }
 }
