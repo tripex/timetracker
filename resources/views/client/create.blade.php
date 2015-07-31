@@ -90,8 +90,6 @@
 @endsection
 @section('footer')
     <script type="text/javascript">
-
-
         $("[name='vat_number']").keyup(function() {
             if($(this).val().length == 8)
             {
@@ -101,7 +99,7 @@
                     data:{_token:"{{ csrf_token()}}"},
                 })
                 .success(function( msg ) {
-                    $("[name='company']").val(msg.name);
+                    $("[name='company']").val('').val(msg.name);
                     $("[name='zipcode']").val(msg.zipcode);
                     $("[name='city']").val(msg.city);
                     $("[name='street']").val(msg.address);

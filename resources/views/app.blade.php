@@ -39,7 +39,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="index2.html" class="logo"><b>Work</b>Nicer</a>
+            <a href="dashboard" class="logo" title="Go to dashboard"><b>Work</b>Nicer</a>
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">

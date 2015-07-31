@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller {
 
@@ -48,13 +49,22 @@ class UserController extends Controller {
 	 */
 	public function store(UserRequest $request)
 	{
+        if($request['generate_password'] == true)
+        {
+            $password = str_random(8);
+        }
+        else
+        {
+            $password = $request['password'];
+        }
+
         User::create([
             'firstname' => $request['firstname'],
             'lastname' => $request['lastname'],
             'company' => $request['company'],
             'email' => $request['email'],
             'user_type' => $request['user_type'],
-            'password' => bcrypt($request['password']),
+            'password' => bcrypt($password),
             'vat_number' => $request['vat_number'],
             'zipcode' => $request['zipcode'],
             'city' => $request['city'],
@@ -62,6 +72,12 @@ class UserController extends Controller {
             'phone' => $request['phone'],
         ]);
 
+        Mail::raw('Du har nu fået en bruger på worknicer.dk - '.$password, function($message)
+        {
+            $message->from('us@example.com', 'Laravel');
+
+            $message->to('info@getwebbed.dk');
+        });
         return redirect('/users');
 	}
 
@@ -74,7 +90,7 @@ class UserController extends Controller {
             abort(403,'This is not your client');
         }
 
-        return view('User.edit', compact('user'));
+        return view('user.edit', compact('user'));
     }
 
     public function update($user_id, UserRequest $request)

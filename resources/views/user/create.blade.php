@@ -92,6 +92,11 @@
                                 <input type="password" class="form-control" name="password_confirmation">
                             </div>
 
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="generate_password"> Generate password and send email to user
+                                    </label>
+                                </div>
                         </div>
                         </div>
                     </div>
@@ -106,4 +111,37 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+    <script type="text/javascript">
+        $("[name='generate_password']").change( function(){
+            if($(this).is(':checked') == true)
+            {
+                $("[name='password'],[name='password_confirmation']").prop('disabled', true);
+            }
+            else
+            {
+                $("[name='password'],[name='password_confirmation']").prop('disabled', false);
+            }
+        })
+
+        $("[name='vat_number']").keyup(function() {
+            if($(this).val().length == 8)
+            {
+                $.ajax({
+                    method:"POST",
+                    url: "/client/cvr/"+$(this).val(),
+                    data:{_token:"{{ csrf_token()}}"},
+                })
+                .success(function( msg ) {
+                    $("[name='company']").val(msg.name);
+                    $("[name='zipcode']").val(msg.zipcode);
+                    $("[name='city']").val(msg.city);
+                    $("[name='street']").val(msg.address);
+                    $("[name='email']").val(msg.email);
+                    $("[name='phone']").val(msg.phone);
+                });;
+            }
+        });
+    </script>
 @endsection

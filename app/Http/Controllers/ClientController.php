@@ -36,11 +36,6 @@ class ClientController extends Controller {
             $clients = Client::where('fk_user', Auth::id())->get();
         }
 
-        Mail::raw('Laravel with Mailgun is easy!', function($message)
-        {
-            $message->to('info@getwebbed.dk');
-        });
-
         return view('client.index', compact('clients'));
     }
 

@@ -36,12 +36,12 @@
 
                     <div class="form-group">
                         <label>Work start</label>
-                        <input type="date" class="form-control datetimepicker" name="work_date_start" value="{{ old('work_date_start') }}">
+                        <input type="text" class="form-control datetimepicker" name="work_date_start" value="{{ old('work_date_start') }}">
                     </div>
 
                     <div class="form-group">
                         <label>Work end</label>
-                        <input type="date" class="form-control datetimepicker" name="work_date_end" value="{{ old('work_date_end') }}">
+                        <input type="text" class="form-control datetimepicker" name="work_date_end" value="{{ old('work_date_end') }}">
                     </div>
 
                     <div class="form-group">
