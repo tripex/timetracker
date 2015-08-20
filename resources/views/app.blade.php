@@ -82,15 +82,15 @@
                     <!-- Optionally, you can add icons to the links -->
                     @if(Auth::user())
                         @if (Auth::user()->user_type == "superadmin")
-                            <li><a href="{{ url('/users') }}">Users</a></li>
-                            <li><a href="{{ url('/user/create') }}">Add user</a></li>
+                            <li><a href="{{ url('/users') }}">{{ trans('menu.users') }}</a></li>
+                            <li><a href="{{ url('/user/create') }}">{{ trans('menu.add_user') }}</a></li>
                             <hr/>
                         @endif
-                            <li><a href="{{ url('/worklog') }}">Worklog</a></li>
-                            <li><a href="{{ url('/worklog/create') }}">Add work</a></li>
+                            <li><a href="{{ url('/worklog') }}">{{ trans('menu.worklog') }}</a></li>
+                            <li><a href="{{ url('/worklog/create') }}">{{ trans('menu.add_worklog') }}</a></li>
                             <hr/>
-                            <li><a href="{{ url('/clients') }}">Clients</a></li>
-                            <li><a href="{{ url('/client/create') }}">Add client</a></li>
+                            <li><a href="{{ url('/clients') }}">{{ trans('menu.clients') }}</a></li>
+                            <li><a href="{{ url('/client/create') }}">{{ trans('menu.add_client') }}</a></li>
                     @endif
                 </ul><!-- /.sidebar-menu -->
             </section>

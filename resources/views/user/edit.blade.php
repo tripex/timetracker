@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title',"Edit $user->firstname $user->lastname")
-@section('header',"Edit $user->firstname $user->lastname ($user->company)")
+@section('header',trans('user.edit')." $user->firstname $user->lastname ($user->company)")
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-md-8">
@@ -24,58 +24,58 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label>Firstname</label>
+                                    <label>{{ trans('user.firstname') }}</label>
                                     <input type="text" class="form-control" name="firstname"
                                            value="{{ $user->firstname }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Lastname</label>
+                                    <label>{{ trans('user.lastname') }}</label>
                                     <input type="text" class="form-control" name="lastname"
                                            value="{{ $user->lastname }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Company</label>
+                                    <label>{{ trans('user.company') }}</label>
                                     <input type="text" class="form-control" name="company" value="{{ $user->company }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>VAT Number</label>
+                                    <label>{{ trans('user.vat_number') }}</label>
                                     <input type="number" class="form-control" name="vat_number"
                                            value="{{ $user->vat_number }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Zipcode</label>
+                                    <label>{{ trans('user.zipcode') }}</label>
                                     <input type="number" class="form-control" name="zipcode"
                                            value="{{ $user->zipcode }}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label>City</label>
+                                    <label>{{ trans('user.city') }}</label>
                                     <input type="text" class="form-control" name="city" value="{{ $user->city }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Street</label>
+                                    <label>{{ trans('user.street') }}</label>
                                     <input type="text" class="form-control" name="street" value="{{ $user->street }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Phone</label>
+                                    <label>{{ trans('user.phone') }}</label>
                                     <input type="number" class="form-control" name="phone" value="{{ $user->phone }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>E-Mail Address</label>
+                                    <label>{{ trans('user.email') }}</label>
                                     <input type="email" class="form-control" name="email" value="{{ $user->email }}">
                                 </div>
 
                                 @if (Auth::user()->user_type == "superadmin")
                                     <div class="form-group">
-                                        <label>User type</label>
+                                        <label>{{ trans('user.user_type') }}</label>
                                         <select name="user_type" class="form-control">
                                             <option value="admin"
                                                     @if ($user->user_type == 'admin') selected="selected" @endif>Admin
@@ -93,7 +93,7 @@
                     <div class="box-footer">
                         <div class="form-group pull-right">
                             <button type="submit" class="btn btn-primary">
-                                Update user
+                                {{ trans('user.update_user') }}
                             </button>
                         </div>
                     </div>

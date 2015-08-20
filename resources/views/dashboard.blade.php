@@ -10,7 +10,7 @@
                     <i class="fa fa-money"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Money earned this month</span>
+                    <span class="info-box-text">{{ trans('dashboard.money_this_month') }}</span>
                     <span class="info-box-number">{{$invoiced_this_month}} DKK</span>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <i class="fa fa-clock-o"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Hours worked this week</span>
+                    <span class="info-box-text">{{ trans('dashboard.hours_worked') }}</span>
                     <span class="info-box-number">{{$hours_worked_this_week}}</span>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <i class="fa fa-users"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Clients</span>
+                    <span class="info-box-text">{{ trans('dashboard.clients') }}</span>
                     <span class="info-box-number">{{$number_of_clients}}</span>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     <i class="fa fa-comment"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Inspiring quote</span>
+                    <span class="info-box-text">{{ trans('dashboard.inspiring_quote') }}</span>
                     <span class="info-box-number">{{ Inspiring::quote() }}</span>
                 </div>
             </div>
@@ -51,15 +51,15 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <span class="box-title">Last 10 worklog entries</span>
+                    <span class="box-title">{{ trans('dashboard.last_10_worklog_entries') }}</span>
                 </div>
         <table class="table-striped table">
             <thead>
             <tr>
-                <th>Workdate</th>
-                <th>Client</th>
-                <th>Hours</th>
-                <th>Note</th>
+                <th>{{ trans('dashboard.workdate') }}</th>
+                <th>{{ trans('dashboard.client') }}</th>
+                <th>{{ trans('dashboard.hours') }}</th>
+                <th>{{ trans('dashboard.note') }}</th>
             </tr>
             </thead>
             <tbody>

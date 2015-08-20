@@ -1,7 +1,7 @@
 @extends('app')
 
-@section('title','Last 10 worklog entries')
-@section('header','Last 10 worklog entries')
+@section('title', trans('worklog.worklog_dashboard'))
+@section('header', trans('worklog.worklog_dashboard'))
 
 @section('content')
     <div class="row">
@@ -11,10 +11,10 @@
                     <table class="table-striped table">
                         <thead>
                         <tr>
-                            <th>Workdate</th>
-                            <th>Client</th>
-                            <th>Hours</th>
-                            <th>Note</th>
+                            <th>{{ trans('worklog.workdate') }}</th>
+                            <th>{{ trans('worklog.client') }}</th>
+                            <th>{{ trans('worklog.hours') }}</th>
+                            <th>{{ trans('worklog.note') }}</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -1,7 +1,7 @@
 @extends('app')
 
-@section('title','Users')
-@section('header','Users')
+@section('title',trans('user.users'))
+@section('header',trans('user.users'))
 
 @section('content')
     <div class="row">
@@ -11,10 +11,10 @@
                     <table class="table-striped table table-hover">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>E-mail</th>
-                            <th>Actions</th>
+                            <th>{{ trans('user.name') }}</th>
+                            <th>{{ trans('user.company') }}</th>
+                            <th>{{ trans('user.email') }}</th>
+                            <th>{{ trans('user.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -23,7 +23,7 @@
                                 <td>{{$user->firstname}} {{$user->lastname}}</td>
                                 <td>{{$user->company}}</td>
                                 <td>{{$user->email}}</td>
-                                <td><a href="{{url('user/'.$user->id.'/edit')}}">edit user</a></td>
+                                <td><a href="{{url('user/'.$user->id.'/edit')}}">{{ trans('user.edit_user') }}</a></td>
                             </tr>
                         @endforeach
                         </tbody>

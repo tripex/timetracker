@@ -1,7 +1,7 @@
 @extends('app')
 
-@section('title',"$client->firstname $client->lastname - $client->company")
-@section('header',"Edit $client->firstname $client->lastname ($client->company)")
+@section('title',trans('client.edit_client')." $client->firstname $client->lastname - $client->company")
+@section('header',trans('client.edit_client')." $client->firstname $client->lastname ($client->company)")
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-md-8">
@@ -24,55 +24,55 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>Firstname</label>
+                            <label>{{ trans('client.firstname') }}</label>
                             <input type="text" class="form-control" name="firstname"
                                    value="{{ $client->firstname }}">
                         </div>
 
                         <div class="form-group">
-                            <label>Lastname</label>
+                            <label>{{ trans('client.lastname') }}</label>
                             <input type="text" class="form-control" name="lastname" value="{{ $client->lastname }}">
                         </div>
 
                         <div class="form-group">
-                            <label>Company</label>
+                            <label>{{ trans('client.company') }}</label>
                             <input type="text" class="form-control" name="company" value="{{ $client->company }}">
                         </div>
 
                         <div class="form-group">
-                            <label>E-Mail Address</label>
+                            <label>{{ trans('client.email') }}</label>
                             <input type="email" class="form-control" name="email" value="{{ $client->email }}">
                         </div>
 
                         <div class="form-group">
-                            <label>Phone</label>
+                            <label>{{ trans('client.phone') }}</label>
                             <input type="text" class="form-control" name="phone" value="{{ $client->phone }}">
                         </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label>VAT-number</label>
+                            <label>{{ trans('client.vatnumber') }}</label>
                             <input type="number" class="form-control" name="vat_number"
                                    value="{{ $client->vat_number }}">
                         </div>
 
                         <div class="form-group">
-                            <label>Zipcode</label>
+                            <label>{{ trans('client.zipcode') }}</label>
                             <input type="number" class="form-control" name="zipcode" value="{{ $client->zipcode }}">
                         </div>
 
                         <div class="form-group">
-                            <label>City</label>
+                            <label>{{ trans('client.city') }}</label>
                             <input type="text" class="form-control" name="city" value="{{ $client->city }}">
                         </div>
 
                         <div class="form-group">
-                            <label>Street</label>
+                            <label>{{ trans('client.street') }}</label>
                             <input type="text" class="form-control" name="street" value="{{ $client->street }}">
                         </div>
 
                         <div class="form-group">
-                            <label>Hourly rate</label>
+                            <label>{{ trans('client.hourly_rate') }}</label>
                             <input type="text" class="form-control" name="hourly_rate"
                                    value="{{ $client->hourly_rate }}">
                         </div>
@@ -82,7 +82,7 @@
                     <div class="box-footer">
                         <div class="form-group pull-right">
                             <button type="submit" class="btn btn-primary">
-                                Update client
+                                {{ trans('client.update_client') }}
                             </button>
                         </div>
                     </div>

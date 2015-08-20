@@ -29,12 +29,12 @@ class WorklogController extends Controller {
         // If superadmin just get all from all accounts
         if(Auth::user()->user_type == 'superadmin')
         {
-            $works = Worklog::take(10)->orderBy('created_at', 'desc')->get();
+            $works = Worklog::orderBy('created_at', 'desc')->get();
         }
         // Else if admin only get worklogs owned by the user
         else
         {
-            $works = Worklog::take(10)->where('fk_user', Auth::id())->orderBy('created_at', 'desc')->get();
+            $works = Worklog::where('fk_user', Auth::id())->orderBy('created_at', 'desc')->get();
         }
 
         return view('worklog.index', compact('works'));

@@ -29,10 +29,9 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <strong>{{ trans('auth.whoops') }}</strong> {{ trans('auth.problems') }}<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -48,26 +47,26 @@
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password" name="password"/>
+                <input type="password" class="form-control" placeholder="{{ trans('auth.password') }}" name="password"/>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember"> Remember Me
+                            <input type="checkbox" name="remember"> {{ trans('auth.remember_me') }}
                         </label>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('auth.sign_in') }}</button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
-        <a href="#">I forgot my password</a><br>
+        <a href="#">{{ trans('auth.forgot_password') }}</a><br>
         {{--<a href="" class="text-center">Register a new membership</a>--}}
 
     </div>

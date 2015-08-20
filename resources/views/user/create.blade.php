@@ -1,7 +1,7 @@
 @extends('app')
 
-@section('title','Create user')
-@section('header', 'Create user')
+@section('title', trans('user.create_user'))
+@section('header', trans('user.create_user'))
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-md-8">
@@ -23,54 +23,54 @@
                         <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <div class="form-group">
-                                <label>Firstname</label>
+                                <label>{{ trans('user.firstname') }}</label>
                                 <input type="text" class="form-control" name="firstname" value="{{ old('firstname') }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Lastname</label>
+                                <label>{{ trans('user.lastname') }}</label>
                                 <input type="text" class="form-control" name="lastname" value="{{ old('lastname') }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Company</label>
+                                <label>{{ trans('user.company') }}</label>
                                 <input type="text" class="form-control" name="company" value="{{ old('company') }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Zipcode</label>
+                                <label>{{ trans('user.zipcode') }}</label>
                                 <input type="number" class="form-control" name="zipcode" value="{{ old('zipcode') }}">
                             </div>
 
                             <div class="form-group">
-                                <label>City</label>
+                                <label>{{ trans('user.city') }}</label>
                                 <input type="text" class="form-control" name="city" value="{{ old('city') }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Street</label>
+                                <label>{{ trans('user.street') }}</label>
                                 <input type="text" class="form-control" name="street" value="{{ old('street') }}">
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-6">
                             <div class="form-group">
-                                <label>VAT Number</label>
+                                <label>{{ trans('user.vat_number') }}</label>
                                 <input type="number" class="form-control" name="vat_number" value="{{ old('vat_number') }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Phone</label>
+                                <label>{{ trans('user.phone') }}</label>
                                 <input type="number" class="form-control" name="phone" value="{{ old('phone') }}">
                             </div>
 
                             <div class="form-group">
-                                <label>E-Mail Address</label>
+                                <label>{{ trans('user.email') }}</label>
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                             </div>
 
                             @if (Auth::user()->user_type == "superadmin")
                                 <div class="form-group">
-                                    <label>User type</label>
+                                    <label>{{ trans('user.user_type') }}</label>
                                     <select name="user_type" class="form-control">
                                         <option value="admin"
                                                 @if (Input::old('user_type') == 'admin') selected="selected" @endif>Admin
@@ -83,18 +83,18 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>{{ trans('user.password') }}</label>
                                 <input type="password" class="form-control" name="password">
                             </div>
 
                             <div class="form-group">
-                                <label>Confirm Password</label>
+                                <label>{{ trans('user.repeat_password') }}</label>
                                 <input type="password" class="form-control" name="password_confirmation">
                             </div>
 
                                   <div class="checkbox">
                                     <label>
-                                      <input type="checkbox" name="generate_password"> Generate password and send email to user
+                                      <input type="checkbox" name="generate_password"> {{ trans('user.random_password') }}
                                     </label>
                                 </div>
                         </div>
@@ -103,7 +103,7 @@
                     <div class="box-footer">
                         <div class="form-group pull-right">
                             <button type="submit" class="btn btn-success">
-                                Create user
+                                {{ trans('user.create_user') }}
                             </button>
                         </div>
                     </div>

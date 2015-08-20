@@ -1,7 +1,7 @@
 @extends('app')
 
-@section('header','Clients')
-@section('title','Clients')
+@section('header',trans('client.clients'))
+@section('title',trans('client.clients'))
 @section('content')
     <div class="row">
         <div class="col-xs-12">
@@ -10,12 +10,12 @@
                     <table class="table-striped table table-hover">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>E-mail</th>
-                            <th>Phone</th>
-                            <th>Hourly rate</th>
-                            <th>Actions</th>
+                            <th>{{ trans('client.name') }}</th>
+                            <th>{{ trans('client.company') }}</th>
+                            <th>{{ trans('client.email') }}</th>
+                            <th>{{ trans('client.phone') }}</th>
+                            <th>{{ trans('client.hourly_rate') }}</th>
+                            <th>{{ trans('client.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -27,9 +27,9 @@
                                 <td>{{$client->phone}}</td>
                                 <td>{{$client->hourly_rate}} DKK</td>
                                 <td>
-                                    <a href="{{ url('worklog/create', $client->id)}}">Create work entry</a>
+                                    <a href="{{ url('worklog/create', $client->id)}}">{{ trans('client.create_work') }}</a>
                                     |
-                                    <a href="{{ url('client/'.$client->id.'/edit') }}">Edit client</a>
+                                    <a href="{{ url('client/'.$client->id.'/edit') }}">{{ trans('client.edit_client') }}</a>
                                 </td>
                             </tr>
                         @endforeach

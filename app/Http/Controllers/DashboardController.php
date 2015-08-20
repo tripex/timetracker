@@ -45,9 +45,8 @@ class DashboardController extends Controller {
      */
     private function hoursWorkedThisWeek()
     {
-        $monday = Carbon::parse('this monday')->format('Y-m-d');
         $sunday = Carbon::parse('this sunday')->format('Y-m-d');
-
+        $monday = Carbon::parse($sunday)->addDays(-6)->format('Y-m-d');
         $hours_worked = Worklog::where('work_date_start','>=',$monday)
             ->Where('work_date_end','<=',$sunday)
             ->where('fk_user','=',$this->user->id)
