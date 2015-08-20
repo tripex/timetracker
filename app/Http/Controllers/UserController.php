@@ -72,12 +72,6 @@ class UserController extends Controller {
             'phone' => $request['phone'],
         ]);
 
-        Mail::raw('Du har nu fået en bruger på worknicer.dk - '.$password, function($message)
-        {
-            $message->from('us@example.com', 'Laravel');
-
-            $message->to('info@getwebbed.dk');
-        });
         return redirect('/users');
 	}
 
