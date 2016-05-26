@@ -7,54 +7,52 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
     /**
      * When class is instantiated start by see if the user is logged in
      *
      */
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
     /**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
         $users = User::all();
 
         return view('user.index', compact('users'));
-	}
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view('user.create');
-	}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('user.create');
+    }
 
-	/**
-	 * Store a newly created resource in storage.
+    /**
+     * Store a newly created resource in storage.
      * Before the method is called, validate the user input
-	 *
+     *
      * @param CreateUserRequest $request
-	 * @return Response
-	 */
-	public function store(UserRequest $request)
-	{
-        if($request['generate_password'] == true)
-        {
+     * @return Response
+     */
+    public function store(UserRequest $request)
+    {
+        if ($request['generate_password'] == true) {
             $password = str_random(8);
-        }
-        else
-        {
+        } else {
             $password = $request['password'];
         }
 
@@ -72,16 +70,21 @@ class UserController extends Controller {
             'phone' => $request['phone'],
         ]);
 
+        if ($request['generate_password'] == true) {
+            Mail::raw('Here is your password: ' . $password, function ($message) use($request) {
+                $message->to($request['email'])->subject('Welcome to worknicer.dk');
+            });
+        }
+
         return redirect('/users');
-	}
+    }
 
     public function edit($user_id)
     {
         $user = User::find($user_id);
 
-        if($user->fk_user != Auth::user()->id && Auth::user()->user_type != 'superadmin')
-        {
-            abort(403,'This is not your client');
+        if ($user->fk_user != Auth::user()->id && Auth::user()->user_type != 'superadmin') {
+            abort(403, 'This is not your client');
         }
 
         return view('user.edit', compact('user'));

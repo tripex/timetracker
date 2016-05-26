@@ -80,7 +80,7 @@ return [
 	|
 	*/
 
-	'username' => env('MAIL_USERNAME', 'getwebbed'),
+	'username' => env('MAIL_USERNAME', 'postmaster@sandboxf9968eed2dac44868d927c481445397c.mailgun.org'),
 
 	/*
 	|--------------------------------------------------------------------------
